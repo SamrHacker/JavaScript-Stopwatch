@@ -17,7 +17,6 @@ window.onload = function() {
     const buttonReset = document.getElementById('button-reset');
     const buttonLap = document.getElementById('button-lap');
 
-
     buttonStart.onclick = function() {
         clearInterval(Interval);
         Interval = setInterval(startTimer, 10);

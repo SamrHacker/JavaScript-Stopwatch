@@ -82,6 +82,22 @@ th {
     align-items: row;
 }
 
+.nav-container {
+    width: 100%;
+    height: 4em;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.nav-item button{
+    border-left: var(--sky-blue) solid 3.5px;
+    font-size:1.2em; 
+    height: 4em;
+    width: 960px;
+    margin: 0em;
+}
+
 #minutes, 
 #seconds {
     font-size: 2em;
