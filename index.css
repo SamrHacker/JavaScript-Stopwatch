@@ -44,9 +44,6 @@ h1, h2, h3, p{
     text-align: center;
 }
 
-table {
-}
-
 th, td {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
@@ -55,6 +52,11 @@ th, td {
     text-align: center;
     padding: 20px;
     outline: var(--sky-blue) solid 1px;
+}
+
+th {
+    position: sticky;
+    top: 0;
 }
 
 .wrapper {
@@ -88,9 +90,15 @@ th, td {
 #table-wrapper {
     position: fixed;
     top: 100%;
-    margin-top: 12em;
-    overflow: scroll;
+    margin-top: 4em;
 }
+
+#lapTable {
+    position: absolute;
+    width: 50em;
+}
+
+
 
 
 
