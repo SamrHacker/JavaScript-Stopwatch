@@ -47,6 +47,6 @@ button:hover {
     border-left: var(--sky-blue) solid 3.5px;
     font-size:1.2em; 
     height: 4em;
-    width: 960px;
+    width: 50vw;
     margin: 0em;
 }
