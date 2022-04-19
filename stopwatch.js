@@ -5,7 +5,6 @@ window.onload = function() {
     let Interval;
     let lapCount = 1;
 
-    let table = document.getElementById('lapTable');
     let bodyRef = document.querySelector('tbody'); 
 
     const appendTens = document.getElementById("tens");
@@ -28,8 +27,11 @@ window.onload = function() {
 
     buttonReset.onclick = function() {
         clearInterval(Interval);
+        minutes = "00";
         tens = "00";
         seconds = "00";
+
+        appendMinutes.innerHTML = tens;
         appendTens.innerHTML = tens;
   	    appendSeconds.innerHTML = seconds;
 

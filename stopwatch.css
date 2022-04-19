@@ -60,7 +60,6 @@ th {
 }
 
 .wrapper {
-    position: relative;
     color: var(--fresh-grey);
 }
 
@@ -98,7 +97,8 @@ th {
 }
 
 #minutes, 
-#seconds {
+#seconds,
+#tens {
     font-size: 2em;
 }
 
