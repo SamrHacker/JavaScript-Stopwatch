@@ -1,86 +1,122 @@
-window.onload = function() {
-    let Interval;
+let Interval;
 
-    let input_minutes =  parseInt(document.querySelector('minutes').value);
-    let input_seconds =  parseInt(document.querySelector('seconds').value);
-    let input_tens =  parseInt(document.querySelector('tens').value);
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
 
-    const appendMinutes = document.getElementById("minutes");
-    const appendSeconds = document.getElementById("seconds");
-    const appendTens = document.getElementById("tens");
+const hoursDisplay = document.getElementById("hours");
+const minutesDisplay = document.getElementById("minutes");
+const secondsDisplay = document.getElementById("seconds");
 
-    const buttonStart = document.getElementById('button-start');
-    const buttonPause = document.getElementById('button-pause');
-    const buttonReset = document.getElementById('button-reset');
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
+const resetButton = document.getElementById("reset");
 
-    const button30min = document.getElementById('30min');
-    const button15min = document.getElementById('15min');
-    const button10min = document.getElementById('10min');
-    const button5min = document.getElementById('5min');
-    const button3min = document.getElementById('3min');
-    const button1min = document.getElementById('1min');
-    const button30sec = document.getElementById('30sec');
-    const button15sec = document.getElementById('15sec');
-    const button5sec = document.getElementById('5sec');
+//all utility functions to setup the page
+const addPresetEventListeners = () => {
+  let buttonDiv = document.getElementById("presets");
+  buttonDiv.childNodes.forEach((button) => {
+    button.addEventListener("click", setPresetTime);
+  });
+};
 
-    let minutes = input_minutes.value * 1;
-    let seconds = input_seconds.value * 1;
-    let tens = input_tens.value * 1;
+const setPresetTime = (e) => {
+  let button = e.target.id;
 
-    let currentTime = `${minutes} : ${seconds} : ${tens}`;
+  switch (button) {
+    case "one-hour":
+      hours += 1;
+      break;
+    case "thirty-min":
+      minutes += 30;
+      break;
+    case "fifteen-min":
+      minutes += 15;
+      break;
+    case "ten-min":
+      minutes += 10;
+      break;
+    case "five-min":
+      minutes += 5;
+      break;
+    case "one-min":
+      mintes += 1;
+      break;
+    case "thirty-sec":
+      seconds += 30;
+      break;
+    case "fifteen-sec":
+      seconds += 15;
+      break;
+    case "five-sec":
+      seconds += 5;
+      break;
+  }
 
+  updateHTML();
+};
 
-    buttonStart.onClick = function() {
-        clearInterval(Interval);
-        Interval = setInterval(startCountdown, 10);
-    };
+startButton.onclick = () => {
+  clearInterval(Interval);
+  Interval = setInterval(startTimer, 1000);
+};
 
-    buttonPause.onClick = function() {
-        clearInterval(Interval);
+stopButton.onclick = () => {
+  clearInterval(Interval);
+};
+
+resetButton.onclick = () => {
+  clearInterval(Interval);
+  minutes = 0;
+  tens = 0;
+  seconds = 0;
+
+  updateHTML();
+};
+
+//logic of the timer
+const startTimer = () => {
+  if (hours != 0 || minutes != 0 || seconds != 0) {
+    seconds -= 1;
+    if (seconds < 0) {
+      seconds = 59;
+      minutes -= 1;
     }
-
-    buttonReset.onclick = function() {
-        clearInterval(Interval);
-        minutes = "00";
-        tens = "00";
-        seconds = "00";
-
-        appendMinutes.value = minutes;
-        appendTens.value = tens;
-  	    appendSeconds.value = seconds;
-    };
-
-    function startCountdown() {
-        tens--;
-
-        if(tens <= 9) {
-            appendTens.value = "00" + tens;
-        }
-        if(tens > 9) {
-            appendTens.value = tens;
-        }
-
-        if (tens < 1) {
-            tens = 99;
-            appendTens.value = tens;
-            seconds--;
-            appendSeconds.value = seconds;
-        }
-
-        if (seconds < 9) {
-            appendSeconds.value = "0" + seconds;
-        }
-
-        if (seconds < 1) {
-            seconds = 59;
-            appendSeconds.value = seconds;
-            minutes--;
-            appendMinutes.value = minutes;
-        }
-
-        if (minutes < 9) {
-            appendMinutes.value = "0" + minutes;
-        }
-
+    if (minutes < 0) {
+      minutes = 59;
+      hours -= 1;
     }
-}
+    updateHTML();
+  } else {
+    alert("Done!");
+    clearInterval(Interval);
+  }
+};
+
+//utility functions
+const updateHTML = () => {
+  if (seconds >= 60) {
+    seconds = seconds % 60;
+    minutes += 1;
+  }
+  if (minutes >= 60) {
+    minutes = minutes % 60;
+    hours += 1;
+  }
+
+  seconds > 9 && seconds != undefined
+    ? (secondsDisplay.innerHTML = seconds)
+    : (secondsDisplay.innerHTML = "0" + seconds);
+  minutes > 9 && minutes != undefined
+    ? (minutesDisplay.innerHTML = minutes)
+    : (minutesDisplay.innerHTML = "0" + minutes);
+  hours > 9 && hours != undefined
+    ? (hoursDisplay.innerHTML = hours)
+    : (hoursDisplay.innerHTML = "0" + hours);
+};
+
+const init = () => {
+  addPresetEventListeners();
+};
+
+window.onload = init();

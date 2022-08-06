@@ -55,7 +55,7 @@ window.onload = function() {
     function startTimer() {
         tens++;
         if(tens <= 9) {
-            appendTens.innerHTML = "00" + tens;
+            appendTens.innerHTML = "0" + tens;
         }
         if(tens > 9) {
             appendTens.innerHTML = tens;
