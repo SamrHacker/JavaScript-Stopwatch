@@ -7,6 +7,6 @@
 <img src="https://user-images.githubusercontent.com/81598650/183257408-161f8b01-01f9-4749-ae52-e450f2ccca1a.png"></img>
 <p>This is the view of the timer. You can use the buttons below to set the time!</p>
 <img src="https://user-images.githubusercontent.com/81598650/183257452-d937cc4c-066b-4c06-bea3-ee94c5651bdf.png"></img>
-<p>The button adds times not sets to it! So "1 hours" button adds 1 hour to the timer. This allows you to set an exact (or close to) time that you want</p>
+<p>The button adds times not sets to it! So "1 hours" button adds 1 hour to the timer. This allows you to set an exact (or close to) time that you want.</p>
 
 
